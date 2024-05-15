@@ -26,4 +26,13 @@
         }
     }
     console.table(bingo);
+    for (var row = 0; row < 5; row++) {
+        var tr = document.createElement('tr');
+        for (var col = 0; col < 5; col++) {
+            var td = document.createElement('td');
+            td.textContent = bingo[row][col];
+            tr.appendChild(td);
+        }
+        document.querySelector('tbody').appendChild(tr);
+    }
 }
