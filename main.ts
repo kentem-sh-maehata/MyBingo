@@ -28,5 +28,5 @@
       bingo[row][col] = columns[col][row]
     }
   }
-  console.log(bingo)
+  console.table(bingo)
 }
