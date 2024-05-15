@@ -10,29 +10,33 @@
         }
         return column;
     }
-    var columns = [];
-    columns[0] = createColumn(0);
-    columns[1] = createColumn(1);
-    columns[2] = createColumn(2);
-    columns[3] = createColumn(3);
-    columns[4] = createColumn(4);
-    columns[2][2] = "free";
-    // console.log(columns)
-    var bingo = [];
-    for (var row = 0; row < 5; row++) {
-        bingo[row] = [];
-        for (var col = 0; col < 5; col++) {
-            bingo[row][col] = columns[col][row];
+    function createColumns() {
+        var columns = [];
+        for (var i = 0; i < 5; i++) {
+            columns[i] = createColumn(i);
+        }
+        columns[2][2] = "free";
+        return columns;
+    }
+    // const bingo:any[][] = []
+    // for (let row = 0; row < 5; row++) {
+    //   bingo[row] = []
+    //   for (let col = 0; col < 5; col++) {
+    //     bingo[row][col] = columns[col][row]
+    //   }
+    // }
+    // console.table(bingo)
+    function renderBingo(columns) {
+        for (var row = 0; row < 5; row++) {
+            var tr = document.createElement("tr");
+            for (var col = 0; col < 5; col++) {
+                var td = document.createElement("td");
+                td.textContent = columns[col][row];
+                tr.appendChild(td);
+            }
+            document.querySelector("tbody").appendChild(tr);
         }
     }
-    console.table(bingo);
-    for (var row = 0; row < 5; row++) {
-        var tr = document.createElement('tr');
-        for (var col = 0; col < 5; col++) {
-            var td = document.createElement('td');
-            td.textContent = bingo[row][col];
-            tr.appendChild(td);
-        }
-        document.querySelector('tbody').appendChild(tr);
-    }
+    var columns = createColumns();
+    renderBingo(columns);
 }
